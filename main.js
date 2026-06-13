@@ -1,40 +1,44 @@
-/* nav scroll effect */
+/* nav scroll */
 const nav = document.querySelector('.nav-bar');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
 
+/* burger menu */
+const burger = document.querySelector('.burger');
+const mobileMenu = document.querySelector('.mobile-menu');
+const mmLinks = document.querySelectorAll('.mm-link');
+
+burger.addEventListener('click', () => {
+  const isOpen = burger.classList.toggle('open');
+  mobileMenu.classList.toggle('open', isOpen);
+  burger.setAttribute('aria-expanded', isOpen);
+  mobileMenu.setAttribute('aria-hidden', !isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+
+mmLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    burger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  });
+});
+
 /* scroll reveal */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, i * 80);
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
       observer.unobserve(entry.target);
     }
   });
 }, { threshold: 0.12 });
 
-document.querySelectorAll('.service-card, .about-text, .about-visual, .contact-item, .contact-form-wrap, .section-header')
+document.querySelectorAll('.ci, .section-header, .contact-info, .privacy-note')
   .forEach(el => {
     el.classList.add('reveal');
     observer.observe(el);
   });
-
-/* form submit */
-const form = document.querySelector('.booking-form');
-form?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const btn = form.querySelector('button[type="submit"]');
-  const original = btn.textContent;
-  btn.textContent = 'Заявка отправлена ✓';
-  btn.disabled = true;
-  btn.style.background = '#5A8A5A';
-  setTimeout(() => {
-    btn.textContent = original;
-    btn.disabled = false;
-    btn.style.background = '';
-    form.reset();
-  }, 3500);
-});
