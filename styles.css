@@ -332,18 +332,38 @@ address { font-style: normal; }
   background: var(--surface);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  padding: 0.9rem 0;
+}
+
+.marquee-track {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-inner {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem 2rem;
-  padding: 1.1rem clamp(1.5rem, 5vw, 4rem);
+  gap: 2rem;
+  white-space: nowrap;
+  animation: marquee 18s linear infinite;
   font-size: var(--xs);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-mid);
 }
-.strip-tagline .sep { color: var(--gold-dim); }
+
+.marquee-inner .sep {
+  color: var(--gold-dim);
+  font-size: 0.55em;
+  flex-shrink: 0;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
 
 /* === SECTION HEADERS === */
 .section-header { margin-bottom: var(--sp-lg); }
@@ -841,11 +861,7 @@ address { font-style: normal; }
 
   .hero-ornament { display: none; }
 
-  .strip-tagline {
-    gap: 0.4rem 1rem;
-    font-size: 0.65rem;
-  }
-  .strip-tagline .sep { display: none; }
+  .marquee-inner { animation-duration: 12s; }
 
   .contact .section-header { text-align: left; }
   .contact-grid { max-width: 100%; }
