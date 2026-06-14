@@ -820,6 +820,10 @@ address { font-style: normal; }
     left: 0;
   }
 
+  .hero-img {
+    object-position: 68% 10%;
+  }
+
   .hero-img-fade {
     background:
       linear-gradient(to top, rgba(13,10,8,0.97) 0%, rgba(13,10,8,0.7) 30%, rgba(13,10,8,0.25) 55%, rgba(13,10,8,0.05) 75%, transparent 100%),
