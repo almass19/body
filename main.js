@@ -31,7 +31,7 @@ mmLinks.forEach(link => {
 document.querySelectorAll('[data-track^="whatsapp"]').forEach(el => {
   el.addEventListener('click', () => {
     if (typeof gtag === 'function') {
-      gtag('event', 'conversion', { send_to: 'AW-18238606211' });
+      gtag('event', 'conversion', { send_to: 'AW-18238606211/BBmtCJv2478cEIOX7PhD' });
       gtag('event', 'whatsapp_click', { event_label: el.dataset.track });
     }
   });
