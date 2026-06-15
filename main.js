@@ -27,6 +27,16 @@ mmLinks.forEach(link => {
   });
 });
 
+/* whatsapp click tracking */
+document.querySelectorAll('[data-track^="whatsapp"]').forEach(el => {
+  el.addEventListener('click', () => {
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', { send_to: 'AW-18238606211' });
+      gtag('event', 'whatsapp_click', { event_label: el.dataset.track });
+    }
+  });
+});
+
 /* scroll reveal */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {

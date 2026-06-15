@@ -568,6 +568,27 @@ address { font-style: normal; }
 .ci-link + .ci-link { margin-top: 0.25rem; }
 .ci-link:hover { color: var(--gold-light); }
 
+.btn-wa-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: var(--sp-sm);
+  padding: 0.7rem 1.4rem;
+  background: #25D366;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-radius: 2rem;
+  text-decoration: none;
+  transition: background 200ms, transform 150ms;
+}
+.btn-wa-contact:hover {
+  background: #1ebe5a;
+  transform: translateY(-1px);
+}
+
 .privacy-note {
   font-size: var(--xs);
   letter-spacing: 0.1em;
