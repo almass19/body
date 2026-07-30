@@ -27,12 +27,12 @@ mmLinks.forEach(link => {
   });
 });
 
-/* whatsapp click tracking */
-document.querySelectorAll('[data-track^="whatsapp"]').forEach(el => {
+/* contact click tracking (звонок / telegram) */
+document.querySelectorAll('[data-track^="call"], [data-track^="telegram"]').forEach(el => {
   el.addEventListener('click', () => {
     if (typeof gtag === 'function') {
       gtag('event', 'conversion', { send_to: 'AW-18238606211/BBmtCJv2478cEIOX7PhD' });
-      gtag('event', 'whatsapp_click', { event_label: el.dataset.track });
+      gtag('event', 'contact_click', { event_label: el.dataset.track });
     }
   });
 });
